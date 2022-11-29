@@ -1,0 +1,3 @@
+﻿//<'Warlords Redux 0.57.Altis.pbo' properties via Mikero's dos tools, dll version 7.46>
+PboType=Arma Mission;
+//</properties>
