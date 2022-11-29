@@ -1,2 +1,2 @@
-# Warlords_F
-# Warlords_F
+
+# Stripping down warlords redux into a better vanilla warlords
