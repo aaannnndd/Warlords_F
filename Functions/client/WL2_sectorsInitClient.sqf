@@ -19,7 +19,8 @@ _i = 0;
 	_sectorPos = position _sector;
 	_area = _sector getVariable "objectArea";
 	
-	if !(isServer) then {
+	// Leaving this in, each sector in the mission.sqm must have a "this setVariable ["BIS_WL_value", xxx]" set without this code.
+	/*if !(isServer) then {
 		if (_sector in WL_BASES) then {
 			_sector setVariable ["BIS_WL_value", BIS_WL_baseValue];
 		} else {
@@ -27,7 +28,7 @@ _i = 0;
 			_size = _a * _b * (if (_isRectangle) then {4} else {pi});
 			_sector setVariable ["BIS_WL_value", round (_size / 10000)];
 		};
-	};
+	};*/
 	
 	_mrkrArea = createMarkerLocal [format ["BIS_WL_sectorMarker_%1_area", _forEachIndex], _sectorPos];
 	_mrkrArea setMarkerShapeLocal (if (_area # 3) then {"RECTANGLE"} else {"ELLIPSE"});

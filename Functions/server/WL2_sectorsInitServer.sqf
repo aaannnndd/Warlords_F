@@ -139,11 +139,12 @@ while {_sectorsToGiveSide1 > 0 || _sectorsToGiveSide2 > 0} do {
 	_area params ["_a", "_b", "_angle", "_isRectangle"];
 	_size = _a * _b * (if (_isRectangle) then {4} else {pi});
 	
-	if (_sector in WL_BASES) then {
+	// Leaving this in, each sector in the mission.sqm must have a "this setVariable ["BIS_WL_value", xxx]" set without this code.
+	/*if (_sector in WL_BASES) then {
 		_sector setVariable ["BIS_WL_value", BIS_WL_baseValue];
 	} else {
 		_sector setVariable ["BIS_WL_value", round (_size / 10000)];
-	};
+	};*/
 	
 	{
 		_handledSide = BIS_WL_competingSides # _forEachIndex;
