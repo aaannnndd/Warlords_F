@@ -68,9 +68,9 @@ class Params
 	class BIS_WL_zoneRestrictionSetting
 	{
 		title = $STR_A3_mdl_supp_zonerest_name;
-		values[] = {0, 1};
-		texts[] = {$STR_A3_to_zoneprotection7, $STR_A3_to_zoneprotection9};
-		default = 0;
+		values[] = {0, 1, 2};
+		texts[] = {$STR_A3_to_zoneprotection7, $STR_A3_to_zoneprotection9, "Vanilla"};
+		default = 2;
 	};
 	
 	class BIS_WL_fogOfWar

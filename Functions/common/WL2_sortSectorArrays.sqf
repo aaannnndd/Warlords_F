@@ -103,6 +103,25 @@ if (_fullRecalc) then {
 				};
 			} forEach _enemySectors;
 		};
+		case 2:
+		{
+			{
+				private _sector = _x;
+				private _zoneRestrictionAxis = (_sector getVariable "size") * 0.5 + (_sector getVariable "border");
+				if (isServer) then {
+					_zoneRestrictionTrigger = ((_sector getVariable "BIS_WL_zoneRestrictionTrgs") select {(_x getVariable "BIS_WL_handledSide") == _side}) # 0;
+					_zoneRestrictionTrigger setTriggerArea [_zoneRestrictionAxis, _zoneRestrictionAxis, 0, TRUE];
+				};
+				
+				if !(isNil "BIS_WL_playerSide") then {
+					if (_side == BIS_WL_playerSide) then {
+						_sector setVariable ["BIS_WL_borderWidth", _zoneRestrictionAxis];
+						((_sector getVariable "BIS_WL_markers") # 2) setMarkerSizeLocal [_zoneRestrictionAxis, _zoneRestrictionAxis];
+						((_sector getVariable "BIS_WL_markers") # 1) setMarkerBrushLocal "Solid";
+					};
+				};
+			} forEach _enemySectors;			
+		};
 	};
 };
 

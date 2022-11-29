@@ -6,11 +6,12 @@ _i = 0;
 {
 	_sector = _x;
 	_sectorPos = position _sector;
-	
+	_area = _sector getVariable "objectArea";
+
 	_mrkrAreaBig = createMarkerLocal [format ["BIS_WL_sectorMarker_%1_areaBig", _forEachIndex], _sectorPos];
-	_mrkrAreaBig setMarkerShapeLocal "ELLIPSE";
+	_mrkrAreaBig setMarkerShapeLocal (if (_area # 3) then {"RECTANGLE"} else {"ELLIPSE"});
 	_mrkrAreaBig setMarkerBrushLocal (if (BIS_WL_zoneRestrictionSetting == 1) then {"FDiagonal"} else {"SolidBorder"});
-	_mrkrAreaBig setMarkerAlphaLocal 1;
+	_mrkrAreaBig setMarkerAlphaLocal 0.35;
 } forEach BIS_WL_allSectors;
 
 {
@@ -32,7 +33,7 @@ _i = 0;
 	_mrkrArea setMarkerShapeLocal (if (_area # 3) then {"RECTANGLE"} else {"ELLIPSE"});
 	_mrkrArea setMarkerDirLocal (_area # 2);
 	_mrkrArea setMarkerBrushLocal "Solid";
-	_mrkrArea setMarkerAlphaLocal 1;
+	_mrkrArea setMarkerAlphaLocal 0.35;
 	_mrkrArea setMarkerSizeLocal [(_area # 0), (_area # 1)];
 } forEach BIS_WL_allSectors;
 
@@ -40,13 +41,14 @@ _i = 0;
 	_sector = _x;
 	
 	_owner = _sector getVariable "BIS_WL_owner";
+	_ownerIndex = BIS_WL_sidesArray find _owner;
 	_revealedBy = _sector getVariable "BIS_WL_revealedBy";
 	_sectorPos = position _sector;
 	
 	_mrkrAreaBig = format ["BIS_WL_sectorMarker_%1_areaBig", _forEachIndex];
 	_mrkrArea = format ["BIS_WL_sectorMarker_%1_area", _forEachIndex];
 	
-	_mrkrAreaBig setMarkerColorLocal "ColorBrown";
+	_mrkrAreaBig setMarkerColorLocal (["colorBLUFOR", "colorOPFOR", "colorIndependent"] select _ownerIndex);
 	
 	_mrkrMain = createMarkerLocal [format ["BIS_WL_sectorMarker_%1_main", _forEachIndex], _sectorPos];
 	
