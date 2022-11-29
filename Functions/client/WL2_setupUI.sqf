@@ -399,8 +399,8 @@ switch (_displayClass) do {
 				switch (_className) do {
 					case "Arsenal": {call BIS_fnc_WL2_orderArsenal};
 					case "LastLoadout": {call BIS_fnc_WL2_orderLastLoadout};
-					case "SaveLoadout": {"save" call BIS_fnc_WL2_orderSavedLoadout};
-					case "SavedLoadout": {"apply" call BIS_fnc_WL2_orderSavedLoadout};
+					//case "SaveLoadout": {"save" call BIS_fnc_WL2_orderSavedLoadout};
+					//case "SavedLoadout": {"apply" call BIS_fnc_WL2_orderSavedLoadout};
 					case "Scan": {[] spawn BIS_fnc_WL2_orderSectorScan};
 					case "FTSeized": {FALSE spawn BIS_fnc_WL2_orderFastTravel};
 					case "FTConflict": {TRUE spawn BIS_fnc_WL2_orderFastTravel};

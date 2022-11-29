@@ -183,7 +183,7 @@ while {_sectorsToGiveSide1 > 0 || _sectorsToGiveSide2 > 0} do {
 		} forEach [_detectionTrg1, _detectionTrg2];
 	};
 
-	private _sectorVehicles = vehicles inAreaArray (_sector getVariable "objectAreaComplete");
+	private _sectorVehicles = [];//vehicles inAreaArray (_sector getVariable "objectAreaComplete");
 	private _sectorVehiclesArray = [];
 	
 	{
