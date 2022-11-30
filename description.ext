@@ -1,4 +1,4 @@
-#include "Functions\warlords_constants.inc"
+#include "warlords_constants.inc"
 
 onLoadName = "Warlords Redux 0.57";
 dev = "Jezuro";
@@ -17,7 +17,7 @@ class Header
 	maxPlayers = 48;
 };
 
-onPauseScript[] = {BIS_fnc_WL2_onPause};
+onPauseScript[] = {WL2_fnc_onPause};
 
 #include "multiplayerSecurity.inc"
 #include "requisitions.inc"
@@ -56,7 +56,7 @@ class CfgDebriefing
 
 class Params
 {
-	class BIS_WL_savingEnabled
+	class WL2_savingEnabled
 	{
 		title = $STR_A3_WL_param_saving;
 		values[] = {1, 0};
@@ -65,7 +65,7 @@ class Params
 		isBool = 1;
 	};
 	
-	class BIS_WL_zoneRestrictionSetting
+	class WL2_zoneRestrictionSetting
 	{
 		title = $STR_A3_mdl_supp_zonerest_name;
 		values[] = {0, 1, 2};
@@ -73,7 +73,7 @@ class Params
 		default = 2;
 	};
 	
-	class BIS_WL_fogOfWar
+	class WL2_fogOfWar
 	{
 		title = $STR_A3_WL_param_fog_of_war;
 		values[] = {0, 1, 2};
