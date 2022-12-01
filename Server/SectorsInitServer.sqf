@@ -1,43 +1,7 @@
 #include "..\warlords_constants.inc"
 
-_potentialBases = WL2_allSectors select {_x getVariable ["WL2_canBeBase", FALSE]};
-private _firstBase = selectRandom ["WL2_base1", "WL2_base2"];
-missionNamespace setVariable [_firstBase, selectRandom _potentialBases, TRUE];
-_potentialBases = _potentialBases - [missionNamespace getVariable _firstBase];
-
-private _tiers = [];
-private _checkedAgainst = [];
-private _distance = 0;
-private _sectorsToCheckNext = (synchronizedObjects (missionNamespace getVariable _firstBase)) select {_x in WL2_allSectors};
-while {count _sectorsToCheckNext > 0} do {
-	private _sectorsToCheckNow = _sectorsToCheckNext;
-	_sectorsToCheckNext = [];
-	private _currentTier = [_distance];
-	{
-		private _sector = _x;
-		if (_sector in _potentialBases && !(_sector in _checkedAgainst)) then {
-			_currentTier pushBack _sector;
-		};
-		_checkedAgainst pushBackUnique _sector;
-		{
-			_sectorsToCheckNext pushBackUnique _x;
-		} forEach ((synchronizedObjects _sector) select {_x != (missionNamespace getVariable _firstBase) && _x in WL2_allSectors && !(_x in _checkedAgainst)});
-	} forEach _sectorsToCheckNow;
-	if (count _currentTier > 1) then {
-		_tiers pushBack _currentTier;
-	};
-	_distance = _distance + 1;
-};
-
-_potentialBases = [];
-_tolerance = 0;
-while {count _potentialBases == 0} do {
-	_potentialBases = _tiers select {(_x # 0) >= (WL2_baseDistanceMin - _tolerance) && (_x # 0) <= WL2_baseDistanceMax};
-	_tolerance = _tolerance + 1;
-};
-_potentialBases = selectRandom _potentialBases;
-_potentialBases = _potentialBases - [_potentialBases # 0];
-missionNamespace setVariable [(["WL2_base1", "WL2_base2"] - [_firstBase]) # 0, selectRandom _potentialBases, TRUE];
+missionNamespace setVariable ["WL2_base1", blufor_base, TRUE];
+missionNamespace setVariable ["WL2_base2", opfor_base, TRUE];
 
 {
 	_side = WL2_competingSides # _forEachIndex;
@@ -138,13 +102,6 @@ while {_sectorsToGiveSide1 > 0 || _sectorsToGiveSide2 > 0} do {
 	
 	_area params ["_a", "_b", "_angle", "_isRectangle"];
 	_size = _a * _b * (if (_isRectangle) then {4} else {pi});
-	
-	// Leaving this in, each sector in the mission.sqm must have a "this setVariable ["WL2_value", xxx]" set without this code.
-	/*if (_sector in WL_BASES) then {
-		_sector setVariable ["WL2_value", WL2_baseValue];
-	} else {
-		_sector setVariable ["WL2_value", round (_size / 10000)];
-	};*/
 	
 	{
 		_handledSide = WL2_competingSides # _forEachIndex;
