@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 ["RequestMenu_close"] call WL2_fnc_setupUI;
 [player, -WL2_lastLoadoutCost] call WL2_fnc_fundsControl;

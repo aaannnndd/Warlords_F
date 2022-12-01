@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_side"];
 
@@ -47,7 +47,7 @@ private _savedLoadoutHandled = FALSE;
 			
 			/*if (_category == "Gear" && !_savedLoadoutHandled) then {
 				_savedLoadoutHandled = TRUE;
-				_data pushBack ["SavedLoadout", WL2_savedLoadoutCost, [], "< " + (localize "STR_A3_WL_saved_loadout") + " >", "\A3\Data_F_Warlords\Data\preview_loadout.jpg", format [localize "STR_A3_WL_saved_loadout_info", "<br/>"]];
+				_data pushBack ["SavedLoadout", WL2_savedLoadoutCost, [], "< " + (localize "STR_WL2_saved_loadout") + " >", "\A3\Data_F_Warlords\Data\preview_loadout.jpg", format [localize "STR_WL2_saved_loadout_info", "<br/>"]];
 			};*/
 			
 			{
@@ -165,7 +165,7 @@ private _savedLoadoutHandled = FALSE;
 			
 			/*if (_category == "Gear" && !_saveLoadoutHandled) then {
 				_saveLoadoutHandled = TRUE;
-				_data pushBack ["SaveLoadout", 0, [], "< " + (localize "STR_A3_WL_save_loadout") + " >", "\A3\Data_F_Warlords\Data\preview_loadout.jpg", localize "STR_A3_WL_save_loadout_info"];
+				_data pushBack ["SaveLoadout", 0, [], "< " + (localize "STR_WL2_save_loadout") + " >", "\A3\Data_F_Warlords\Data\preview_loadout.jpg", localize "STR_WL2_save_loadout_info"];
 			};*/
 			
 			_sortedArray set [_index, _data];

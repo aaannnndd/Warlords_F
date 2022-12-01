@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 missionNamespace setVariable ["WL2_base1", blufor_base, TRUE];
 missionNamespace setVariable ["WL2_base2", opfor_base, TRUE];

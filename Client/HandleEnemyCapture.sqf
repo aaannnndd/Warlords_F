@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_sector"];
 
@@ -17,7 +17,7 @@ while {!WL2_missionEnd} do {
 			if (WL_SYNCED_TIME > _nextPossibleWarn) then {
 				_nextPossibleWarn = WL_SYNCED_TIME + WL_LOSING_SECTOR_WARN_FREQ;
 				"under_attack" call WL2_fnc_announcer;
-				[toUpper format [localize "STR_A3_WL_popup_losing_sector", WL2_enemySide call WL2_fnc_sideToFaction, _sector getVariable "WL2_name"]] spawn WL2_fnc_smoothText;
+				[toUpper format [localize "STR_WL2_popup_losing_sector", WL2_enemySide call WL2_fnc_sideToFaction, _sector getVariable "WL2_name"]] spawn WL2_fnc_smoothText;
 			};
 			
 			while {count (_sector getVariable ["WL2_seizingInfo", []]) == 3 && (_sector getVariable "WL2_owner") == WL2_playerSide} do {

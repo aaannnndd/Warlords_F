@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_event"];
 
@@ -6,12 +6,12 @@ params ["_event"];
 
 if (_event == "save") then {
 	WL2_savedLoadout = +getUnitLoadout player;
-	[toUpper localize "STR_A3_WL_loadout_saved"] spawn WL2_fnc_smoothText;
+	[toUpper localize "STR_WL2_loadout_saved"] spawn WL2_fnc_smoothText;
 	private _varName = format ["WL2_purchasable_%1", WL2_playerSide];
 	private _gearArr = (missionNamespace getVariable _varName) # 5;
 	private _savedLoadoutArr = _gearArr # 1;
 	private _text = _savedLoadoutArr # 5;
-	private _text = format [localize "STR_A3_WL_saved_loadout_info", "<br/>"];
+	private _text = format [localize "STR_WL2_saved_loadout_info", "<br/>"];
 	_text = _text + "<br/><br/>";
 	{
 		switch (_forEachIndex) do {

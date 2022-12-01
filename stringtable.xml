@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="Warlords Improved Strings">
+	<Key ID="STR_WL2_popup_appropriate_sector_selection">
+		<Original>Select an appropriate sector.</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_asset_limit_reached">
+		<Original>Assets limit reached.</Original>
+	</Key>
+	<Key ID="STR_WL2_info_vehs_in_basket">
+		<Original>Only infantry and ammoboxes can be airdropped on your coordinates.</Original>
+	</Key>
+	<Key ID="STR_WL2_info_no_units_selected">
+		<Original>No units selected.</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_asset_rearmed">
+		<Original>Asset rearmed.</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_asset_repaired">
+		<Original>Asset repaired.</Original>
+	</Key>
+	<Key ID="STR_WL2_hint_maintenance">
+		<Original>With the appropriate assets nearby, you can %1REPAIR%2 or %1REARM%2 your vehicles via Action menu. This can only be done when you're on foot.</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_losing_sector">
+		<Original>%1 is capturing %2!</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_asset_not_empty">
+		<Original>Selected asset is not empty.</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_asset_deleted">
+		<Original>%1 deleted.</Original>
+	</Key>
+	<Key ID="STR_WL2_info_asset_map_deletion">
+		<Original>Alt-Shift-click to %1delete%2%3%4</Original>
+	</Key>
+	<Key ID="STR_WL2_save_loadout">
+		<Original>Save loadout</Original>
+	</Key>
+	<Key ID="STR_WL2_save_loadout_info">
+		<Original>Save your current loadout for later reapplication.</Original>
+	</Key>
+	<Key ID="STR_WL2_saved_loadout">
+		<Original>Your saved loadout</Original>
+	</Key>
+	<Key ID="STR_WL2_saved_loadout_info">
+		<Original>Apply your saved loadout.%1You can save your current loadout by requesting 'Save loadout' at the end of this list.</Original>
+	</Key>
+	<Key ID="STR_WL2_loadout_saved">
+		<Original>Loadout saved.</Original>
+	</Key>
+	<Key ID="STR_WL2_switch_teams">
+		<Original>Switching teams is disabled.</Original>
+	</Key>
+	<Key ID="STR_WL2_switch_teams_info">
+		<Original>You've already joined the opposing faction. Please switch back to your team.</Original>
+	</Key>
+	<Key ID="STR_WL2_target_reset_info">
+		<Original>Reset target selection?</Original>
+	</Key>
+	<Key ID="STR_WL2_target_reset_votes_needed">
+		<Original>Votes needed</Original>
+	</Key>
+	<Key ID="STR_WL2_param_saving">
+		<Original>Saving</Original>
+	</Key>
+	<Key ID="STR_WL2_param_saving_info">
+		<Original>Possibility to save game in the pause menu</Original>
+	</Key>
+	<Key ID="STR_WL2_param_fog_of_war">
+		<Original>Fog of war</Original>
+	</Key>
+	<Key ID="STR_WL2_param_fog_of_war_value1">
+		<Original>Show enemy base location</Original>
+	</Key>
+	<Key ID="STR_WL2_param_fog_of_war_value2">
+		<Original>Show nothing</Original>
+	</Key>
+	<Key ID="STR_WL2_asset_dispatched_TODO_REWRITE">
+		<Original>Asset dispatched.</Original>
+	</Key>
+	<Key ID="STR_WL2_transfer_restr1_TODO_REWRITE">
+		<Original>No allied players available.</Original>
+	</Key>
+	<Key ID="STR_WL2_popup_voting_reset_user_TODO_REWRITE">
+		<Original>Sector voting reset requested by %1</Original>
+	</Key>
+</Project>

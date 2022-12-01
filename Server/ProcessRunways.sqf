@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 private _sectorsWithRunways = WL2_allSectors select {"A" in (_x getVariable "WL2_services")};
 

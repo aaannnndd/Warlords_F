@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 _prevSector1 = objNull;
 _prevSector2 = objNull;

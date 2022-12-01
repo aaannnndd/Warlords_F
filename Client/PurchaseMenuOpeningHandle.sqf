@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 waitUntil {!isNull WL_DISPLAY_MAIN};
 sleep 2;

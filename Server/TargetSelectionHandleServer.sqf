@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 {
 	missionNamespace setVariable [format ["WL2_currentTarget_%1", _x], objNull, TRUE];

@@ -1,42 +1,42 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_locality"];
 
 switch (_locality) do {
 	case "common": {
 		WL2_sidesArray = [WEST, EAST, RESISTANCE];
-		WL2_competingSides = [[WEST, EAST], [WEST, RESISTANCE], [EAST, RESISTANCE]] # (WL2_initModule getVariable ["WL2_combatantsPreset", 0]);
-		WL2_targetVotingDuration = WL2_initModule getVariable ["WL2_targetVotingDuration", 15];
-		WL2_startCP = WL2_initModule getVariable ["WL2_startCP", 500];
-		WL2_fogOfWar = WL2_initModule getVariable ["WL2_fogOfWar", 1];
+		WL2_competingSides = [[WEST, EAST], [WEST, RESISTANCE], [EAST, RESISTANCE]] # (["CombatantsPreset", 0] call BIS_fnc_getParamValue);
+		WL2_targetVotingDuration = (["TargetVotingDuration", 15] call BIS_fnc_getParamValue);
+		WL2_startCP = ["StartCP", 500] call BIS_fnc_getParamValue;
+		WL2_fogOfWar = (["FogOfWar", 1] call BIS_fnc_getParamValue);
 		WL2_localSide = (WL2_sidesArray - WL2_competingSides) # 0;
 		WL2_missionEnd = FALSE;
 		WL2_sectorUpdateInProgress = FALSE;
 		WL2_mapSize = getNumber (configFile >> "cfgWorlds" >> worldName >> "mapSize");
 		if (WL2_mapSize == 0) then {WL2_mapSize = getNumber (configFile >> "cfgWorlds" >> worldName >> "Grid" >> "OffsetY")};
 		WL2_mapAreaArray = [[WL2_mapSize / 2, WL2_mapSize / 2], WL2_mapSize / 2, WL2_mapSize / 2, 0, TRUE];
-		WL2_purchaseListTeplateArr = call compile (WL2_initModule getVariable ["WL2_requisitionPreset", "['A3DefaultAll']"]);
-		WL2_scanCost = WL2_initModule getVariable ["WL2_scanCost", 350];
-		WL2_fastTravelCostOwned = WL2_initModule getVariable ["WL2_fastTravelCostOwned", 0];
-		WL2_fastTravelCostContested = WL2_initModule getVariable ["WL2_fastTravelCostContested", 50];
-		WL2_fundsTransferCost = WL2_initModule getVariable ["WL2_fundsTransferCost", 500];
-		WL2_targetResetCost = WL2_initModule getVariable ["WL2_targetResetCost", 2000];
-		WL2_scanEnabled = WL2_initModule getVariable ["WL2_scanEnabled", TRUE];
-		WL2_fastTravelEnabled = WL2_initModule getVariable ["WL2_fastTravelEnabled", 1];
-		WL2_maxCP = WL2_initModule getVariable ["WL2_maxCP", 50000];
-		WL2_dropCost = WL2_initModule getVariable ["WL2_dropCost", 25];
-		WL2_dropCost_far = WL2_initModule getVariable ["WL2_dropCost_far", 1000];
-		WL2_arsenalEnabled = WL2_initModule getVariable ["WL2_arsenalEnabled", TRUE];
-		WL2_arsenalCost = WL2_initModule getVariable ["WL2_arsenalCost", 1000];
-		WL2_assetLimit = WL2_initModule getVariable ["WL2_assetLimit", 10];
-		WL2_maxSubordinates = WL2_initModule getVariable ["WL2_maxSubordinates", 3];
-		WL2_targetResetTimeout = WL2_initModule getVariable ["WL2_targetResetTimeout", 300];
-		WL2_baseValue = WL2_initModule getVariable ["WL2_baseValue", 10];
-		WL2_scanCooldown = (WL2_initModule getVariable ["WL2_scanCooldown", 90]) max WL_SCAN_DURATION;
-		WL2_lastLoadoutCost = WL2_initModule getVariable ["WL2_lastLoadoutCost", 100];
-		WL2_savedLoadoutCost = WL2_initModule getVariable ["WL2_savedLoadoutCost", 500];
-		WL2_zoneRestrictionSetting = WL2_initModule getVariable ["WL2_zoneRestrictionSetting", 0];
-		WL2_savingEnabled = WL2_initModule getVariable ["WL2_savingEnabled", FALSE];
+		WL2_purchaseListTeplateArr = ['A3ReduxAll'];
+		WL2_scanCost = (["ScanCost", 350] call BIS_fnc_getParamValue);
+		WL2_fastTravelCostOwned = (["FastTravelCostOwned", 25] call BIS_fnc_getParamValue);
+		WL2_fastTravelCostContested = (["FastTravelCostContested", 50] call BIS_fnc_getParamValue);
+		WL2_fundsTransferCost = (["FundsTransferCost", 500] call BIS_fnc_getParamValue);
+		WL2_targetResetCost = (["TargetResetCost", 2000] call BIS_fnc_getParamValue);
+		WL2_scanEnabled = ([false,true] select (["ScanEnabled", 1] call BIS_fnc_getParamValue));
+		WL2_fastTravelEnabled = (["FastTravelEnabled", 1] call BIS_fnc_getParamValue);
+		WL2_maxCP = (["MaxCP", 50000] call BIS_fnc_getParamValue);
+		WL2_dropCost = (["DropCost", 25] call BIS_fnc_getParamValue);
+		WL2_dropCost_far = (["DropCost_far", 1000] call BIS_fnc_getParamValue);
+		WL2_arsenalEnabled = ([false,true] select (["ArsenalEnabled", 1] call BIS_fnc_getParamValue));
+		WL2_arsenalCost = (["ArsenalCost", 1000] call BIS_fnc_getParamValue);
+		WL2_assetLimit = (["AssetLimit", 10] call BIS_fnc_getParamValue);
+		WL2_maxSubordinates = (["MaxSubordinates", 3] call BIS_fnc_getParamValue);
+		WL2_targetResetTimeout = (["TargetResetTimeout", 300] call BIS_fnc_getParamValue);
+		WL2_baseValue = (["BaseValue", 10] call BIS_fnc_getParamValue);
+		WL2_scanCooldown = (["ScanCooldown", 90] call BIS_fnc_getParamValue) max WL_SCAN_DURATION;
+		WL2_lastLoadoutCost = (["LastLoadoutCost", 100] call BIS_fnc_getParamValue);
+		WL2_savedLoadoutCost = (["SavedLoadoutCost", 500] call BIS_fnc_getParamValue);
+		WL2_zoneRestrictionSetting = (["ZoneRestrictionSetting", 2] call BIS_fnc_getParamValue);
+		WL2_savingEnabled = ([false,true] select (["SavingEnabled", 0] call BIS_fnc_getParamValue));
 		WL2_blacklistedBackpacks = [];
 		{
 			private _class = _x;
@@ -64,13 +64,10 @@ switch (_locality) do {
 		];
 	};
 	case "server": {
-		WL2_allowAIVoting = WL2_initModule getVariable ["WL2_allowAIVoting", FALSE];
-		WL2_initialProgress = WL2_initModule getVariable ["WL2_initialProgress", FALSE];
-		WL2_baseDistanceMin = WL2_initModule getVariable ["WL2_baseDistanceMin", 1];
-		WL2_baseDistanceMax = WL2_initModule getVariable ["WL2_baseDistanceMax", -1];
-		WL2_wreckRemovalTimeout = WL2_initModule getVariable ["WL2_wreckRemovalTimeout", 30];
-		WL2_corpseRemovalTimeout = WL2_initModule getVariable ["WL2_corpseRemovalTimeout", 600];
-		if (WL2_baseDistanceMax < 0) then {WL2_baseDistanceMax = 999};
+		WL2_allowAIVoting = ([false,true] select (["AllowAIVoting", 0] call BIS_fnc_getParamValue));
+		WL2_initialProgress = (["InitialProgress", 0] call BIS_fnc_getParamValue);
+		WL2_wreckRemovalTimeout = (["WreckRemovalTimeout", 30] call BIS_fnc_getParamValue);
+		WL2_corpseRemovalTimeout = (["CorpseRemovalTimeout", 600] call BIS_fnc_getParamValue);
 		WL2_initialProgress = switch (WL2_initialProgress) do {
 			case 0: 	{[0, 0]};
 			case 2525: 	{[0.25, 0.25]};
@@ -87,28 +84,25 @@ switch (_locality) do {
 			case 2575: 	{[0.25, 0.75]};
 		};
 		WL2_playerIDArr = [[], []];
-		WL2_faction_WEST = WL2_initModule getVariable ["WL2_faction_WEST", "BLU_F"];
-		WL2_faction_EAST = WL2_initModule getVariable ["WL2_faction_EAST", "OPF_F"];
-		WL2_faction_GUER = WL2_initModule getVariable ["WL2_faction_GUER", "IND_F"];
 		{
 			missionNamespace setVariable [format ["WL2_boundTo%1", _x], []];
 		} forEach WL2_competingSides;
-		WL2_timeMultiplier = WL2_initModule getVariable ["WL2_timeMultiplier", 12];
+		WL2_timeMultiplier = (["TimeMultiplier", 6] call BIS_fnc_getParamValue);
 	};
 	case "client": {
 		WL2_playerSide = side group player;
 		WL2_enemySide = (WL2_competingSides - [WL2_playerSide]) # 0;
-		WL2_playersAlpha = (WL2_initModule getVariable ["WL2_playersAlpha", 50]) / 100;
-		WL2_markersAlpha = (WL2_initModule getVariable ["WL2_markersAlpha", 50]) / 100;
-		WL2_autonomous_limit = WL2_initModule getVariable ["WL2_autonomous_limit", 2];
+		WL2_playersAlpha = 50 / 100;
+		WL2_markersAlpha = 50 / 100;
+		WL2_autonomous_limit = (["Autonomous_limit", 2] call BIS_fnc_getParamValue);
 		WL2_playerBase = WL2_playerSide call WL2_fnc_getSideBase;
 		WL2_enemyBase = WL2_enemySide call WL2_fnc_getSideBase;
 		WL2_mapSizeIndex = WL2_mapSize / 8192;
 		WL2_colorMarkerFriendly = ["colorBLUFOR", "colorOPFOR", "colorIndependent"] # (WL2_sidesArray find WL2_playerSide);
 		WL2_colorMarkerEnemy = ["colorBLUFOR", "colorOPFOR", "colorIndependent"] # (WL2_sidesArray find WL2_enemySide);
 		WL2_targetVote = objNull;
-		WL2_announcerEnabled = WL2_initModule getVariable ["WL2_announcerEnabled", TRUE];
-		WL2_musicEnabled = WL2_initModule getVariable ["WL2_musicEnabled", TRUE];
+		WL2_announcerEnabled = ([false,true] select (["AnnouncerEnabled", 1] call BIS_fnc_getParamValue));
+		WL2_musicEnabled = ([false,true] select (["MusicEnabled", 1] call BIS_fnc_getParamValue));
 		WL2_terminateOSDEvent_voting = FALSE;
 		WL2_terminateOSDEvent_seizing = FALSE;
 		WL2_terminateOSDEvent_trespassing = FALSE;

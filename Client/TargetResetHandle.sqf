@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 WL2_playerSide spawn {
 	_varNameVoting = format ["WL2_targetResetVotingSince_%1", _this];
@@ -7,7 +7,7 @@ WL2_playerSide spawn {
 	while {!WL2_missionEnd} do {
 		waitUntil {sleep WL_TIMEOUT_STANDARD; WL_SYNCED_TIME < ((missionNamespace getVariable [_varNameVoting, -1]) + WL_TARGET_RESET_VOTING_TIME) && !isNull WL_TARGET_FRIENDLY && (missionNamespace getVariable [_varNameReset, ""]) != ""};
 		
-		[toUpper format [localize "STR_A3_WL_popup_voting_reset_user_TODO_REWRITE", missionNamespace getVariable _varNameReset]] spawn BIS_fnc_WLSmoothText;
+		[toUpper format [localize "STR_WL2_popup_voting_reset_user_TODO_REWRITE", missionNamespace getVariable _varNameReset]] spawn BIS_fnc_WLSmoothText;
 		missionNamespace setVariable [_varNameReset, ""];
 		
 		if ((player getVariable ["WL2_targetResetVote", -1]) == -1) then {

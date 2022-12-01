@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 ["client_init"] call BIS_fnc_startLoadingScreen;
 
@@ -44,9 +44,9 @@ if !(missionNamespace getVariable _teamCheckOKVarID) exitWith {
 	(WL_DISPLAY_MAIN displayCtrl 994000) ctrlSetStructuredText parseText format [
 		"<t shadow = '0'><t size = '%1' color = '#ff4b4b'>%2</t><br/><t size = '%3'>%4</t></t>",
 		(2.5 call WL2_fnc_sub_purchaseMenuGetUIScale),
-		localize "STR_A3_WL_switch_teams",
+		localize "STR_WL2_switch_teams",
 		(1.5 call WL2_fnc_sub_purchaseMenuGetUIScale),
-		localize "STR_A3_WL_switch_teams_info"
+		localize "STR_WL2_switch_teams_info"
 	];
 };
 

@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 {_x setMarkerAlphaLocal 0} forEach WL2_sectorLinks;
 _mostVotedVar = format ["WL2_mostVoted_%1", WL2_playerSide];

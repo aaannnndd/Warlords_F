@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 WL2_allWarlords = +(playableUnits + switchableUnits) select {(side group _x) in WL2_competingSides && !(_x getVariable ["WL2_ignore", FALSE])};
 

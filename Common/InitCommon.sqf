@@ -1,27 +1,8 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 WL2_allSectors = (entities "Logic") select {count synchronizedObjects _x > 0};
 
 call compile preprocessFileLineNumbers "TEMP.sqf";
-
-if (isMultiplayer) then {
-	_initModuleVars = allVariables WL2_initModule;
-	
-	{
-		_param = configName _x;
-		
-		if ((toLower _param) in _initModuleVars) then {
-			_value = paramsArray # _forEachIndex;
-			_convertToBool = getNumber (_x >> "isBool") == 1;
-			
-			if (_convertToBool) then {
-				_value = [FALSE, TRUE] # _value;
-			};
-			
-			WL2_initModule setVariable [_param, _value];
-		};
-	} forEach ("TRUE" configClasses (missionConfigFile >> "Params"));
-};
 
 "common" call WL2_fnc_varsInit;
 

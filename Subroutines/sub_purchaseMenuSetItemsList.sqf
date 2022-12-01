@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 _display = uiNamespace getVariable ["WL2_purchaseMenuDisplay", displayNull];
 _purchase_category = _display displayCtrl 100;

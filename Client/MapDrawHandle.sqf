@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 {(_x displayCtrl 51) ctrlRemoveEventHandler ["Draw", missionNamespace getVariable ["WL2_mapDrawHandler", -1]]} forEach allDisplays;
 

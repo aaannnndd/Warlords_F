@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 private _sector = (_this # 1) getVariable ["WL2_sector", objNull];
 

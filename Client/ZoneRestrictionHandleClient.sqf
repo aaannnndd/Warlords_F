@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 while {TRUE} do {
 	waitUntil {(player getVariable ["WL2_zoneRestrictionKillTime", -1]) != -1};

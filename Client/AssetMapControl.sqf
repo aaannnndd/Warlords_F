@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 WL2_assetMapClickHandler = addMissionEventHandler ["MapSingleClick", {
 	params ["_units", "_pos", "_alt", "_shift"];
@@ -6,10 +6,10 @@ WL2_assetMapClickHandler = addMissionEventHandler ["MapSingleClick", {
 		if !(isNull WL2_mapAssetTarget) then {
 			if ((WL2_mapAssetTarget in WL_PLAYER_VEHS) && count crew WL2_mapAssetTarget > 0) then {
 				playSound "AddItemFailed";
-				[toUpper localize "STR_A3_WL_popup_asset_not_empty"] spawn WL2_fnc_smoothText;
+				[toUpper localize "STR_WL2_popup_asset_not_empty"] spawn WL2_fnc_smoothText;
 			} else {
 				playSound "AddItemOK";
-				[format [toUpper localize "STR_A3_WL_popup_asset_deleted", toUpper (WL2_mapAssetTarget getVariable "WL2_iconText")], 2] spawn WL2_fnc_smoothText;
+				[format [toUpper localize "STR_WL2_popup_asset_deleted", toUpper (WL2_mapAssetTarget getVariable "WL2_iconText")], 2] spawn WL2_fnc_smoothText;
 				_ownedVehiclesVarName = format ["WL2_%1_ownedVehicles", getPlayerUID player];
 				missionNamespace setVariable [_ownedVehiclesVarName, WL_PLAYER_VEHS - [WL2_mapAssetTarget]];
 				publicVariableServer _ownedVehiclesVarName;
@@ -39,7 +39,7 @@ WL2_assetMapHandler = addMissionEventHandler ["EachFrame", {
 				"<t shadow = '2' size = '%1'>%2</t>",
 				(1 call WL2_fnc_sub_purchaseMenuGetUIScale),
 				format [
-					localize "STR_A3_WL_info_asset_map_deletion",
+					localize "STR_WL2_info_asset_map_deletion",
 					"<t color = '#ff4b4b'>",
 					"</t>",
 					"<br/>",

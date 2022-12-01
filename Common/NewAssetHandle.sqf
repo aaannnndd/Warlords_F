@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_owner", "_asset", ["_assembled", FALSE]];
 
@@ -79,7 +79,7 @@ if (isPlayer _owner) then {
 									["repairAsset", [_asset]] call WL2_fnc_sendClientRequest;
 									_asset setVariable ["WL2_nextRepair", WL_SYNCED_TIME + WL_MAINTENANCE_COOLDOWN_REPAIR];
 									playSound3D ["A3\Sounds_F\sfx\UI\vehicles\Vehicle_Repair.wss", _asset, FALSE, getPosASL _asset, 2, 1, 75];
-									[toUpper localize "STR_A3_WL_popup_asset_repaired"] spawn WL2_fnc_smoothText;
+									[toUpper localize "STR_WL2_popup_asset_repaired"] spawn WL2_fnc_smoothText;
 								} else {
 									playSound "AddItemFailed";
 								};
@@ -122,7 +122,7 @@ if (isPlayer _owner) then {
 									_asset selectWeapon _curWeapon;
 									_asset setVariable ["WL2_nextRearm", WL_SYNCED_TIME + WL_MAINTENANCE_COOLDOWN_REARM];
 									playSound3D ["A3\Sounds_F\sfx\UI\vehicles\Vehicle_Rearm.wss", _asset, FALSE, getPosASL _asset, 2, 1, 75];
-									[toUpper localize "STR_A3_WL_popup_asset_rearmed"] spawn WL2_fnc_smoothText;
+									[toUpper localize "STR_WL2_popup_asset_rearmed"] spawn WL2_fnc_smoothText;
 								} else {
 									playSound "AddItemFailed";
 								};

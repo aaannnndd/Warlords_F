@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 _display = uiNamespace getVariable ["WL2_purchaseMenuDisplay", displayNull];
 
@@ -149,7 +149,7 @@ if (count _assetDetails > 0) then {
 		} else {
 			uiNamespace setVariable ["WL2_purchaseMenuDropPlayerAffordable", FALSE];
 			if (WL2_vehsInBasket != ({(_x # 0) isKindOf "Thing"} count WL2_dropPool)) then {
-				_purchase_drop_player ctrlSetTooltip localize "STR_A3_WL_info_vehs_in_basket";
+				_purchase_drop_player ctrlSetTooltip localize "STR_WL2_info_vehs_in_basket";
 			} else {
 				_purchase_drop_player ctrlSetTooltip format ["%1%4: %2 %3", localize "STR_A3_WL_menu_cost", WL2_dropCost_far, localize "STR_A3_WL_unit_cp", if (toLower language == "french") then {" "} else {""}];
 			};

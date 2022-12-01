@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 ["Preload"] call BIS_fnc_arsenal;
 

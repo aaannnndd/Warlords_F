@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 if !(isNull WL_TARGET_FRIENDLY) then {
 	_color = if (WL2_playerSide in (WL_TARGET_FRIENDLY getVariable "WL2_revealedBy")) then {

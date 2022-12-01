@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_area", ["_rimWidth", 0], ["_infantryOnly", TRUE], ["_sortCenter", objNull]];
 if (typeName _area != typeName []) then {_area = [_area]};

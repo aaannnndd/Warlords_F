@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 if (isNil "WL2_soundMsgBuffer" && WL2_announcerEnabled) then {
 	WL2_soundMsgBuffer = [];

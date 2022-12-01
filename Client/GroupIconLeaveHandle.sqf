@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 WL2_highlightedSector = objNull;
 WL2_hoverSamplePlayed = FALSE;

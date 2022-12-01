@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 while {!WL2_missionEnd} do {
 	_newPlayers = WL2_allWarlords select {!isNull _x && ((_x getVariable ["WL2_detectedByServerSince", -1]) == -1) || (isPlayer _x && isNil {missionNamespace getVariable format ["WL2_teamCheckOK_%1", getPlayerUID _x]})};

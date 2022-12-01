@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 if !(isDedicated) then {
 	waitUntil {!isNil "WL2_playerSide" && !isNil "WL2_playersAlpha"};

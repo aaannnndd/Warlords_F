@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 if (WL2_musicEnabled) then {
 	_musicPool = "getText (_x >> 'name') != '' && getNumber (_x >> 'duration') > 20" configClasses (configFile >> "CfgMusic");

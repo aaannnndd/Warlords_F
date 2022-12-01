@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 params ["_unit"];
 
@@ -6,7 +6,7 @@ _unit addEventHandler ["WeaponAssembled", {
 	if (count WL_PLAYER_VEHS >= WL2_assetLimit) then {
 		(_this # 0) action ["Disassemble", (_this # 1)];
 		playSound 'AddItemFailed';
-		[toUpper localize 'STR_A3_WL_popup_asset_limit_reached'] spawn WL2_fnc_smoothText;
+		[toUpper localize 'STR_WL2_popup_asset_limit_reached'] spawn WL2_fnc_smoothText;
 		(_this # 1) spawn {
 			_pos = position _this;
 			sleep 2;

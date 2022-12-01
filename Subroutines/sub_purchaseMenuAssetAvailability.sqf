@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 private ["_ret", "_tooltip", "_class", "_DLCOwned", "_DLCTooltip"];
 
@@ -41,7 +41,7 @@ if (_ret) then {
 			if (_visitedSectorID == -1) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_menu_arsenal_restr1"};
 		};
 		case "FundsTransfer": {
-			if (count (WL2_allWarlords select {side group _x == side group player}) < 2) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_transfer_restr1_TODO_REWRITE"};
+			if (count (WL2_allWarlords select {side group _x == side group player}) < 2) exitWith {_ret = FALSE; _tooltip = localize "STR_WL2_transfer_restr1_TODO_REWRITE"};
 		};
 		case "TargetReset": {
 			if (isNull WL_TARGET_FRIENDLY) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_no_conflict"};
@@ -55,7 +55,7 @@ if (_ret) then {
 			if (_visitedSectorID == -1) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_menu_arsenal_restr1"};
 		};
 		case "RemoveUnits": {
-			if (count ((groupSelectedUnits player) - [player]) == 0) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_info_no_units_selected"};
+			if (count ((groupSelectedUnits player) - [player]) == 0) exitWith {_ret = FALSE; _tooltip = localize "STR_WL2_info_no_units_selected"};
 		};
 		default {
 			_servicesAvailable = WL2_sectorsArray # 5;
@@ -63,7 +63,7 @@ if (_ret) then {
 			
 			if (_requirements findIf {!(_x in _servicesAvailable)} >= 0) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_airdrop_restr1"};
 			if (_category == "Infantry" && (count units group player) - 1 + WL2_matesInBasket >= WL2_matesAvailable) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_airdrop_restr2"};
-			if (_category in ["Vehicles", "Gear", "Defences", "Aircraft", "Naval"] && _vehiclesCnt + WL2_vehsInBasket >= WL2_assetLimit) exitWith {_ret = FALSE; _tooltip = localize "STR_A3_WL_popup_asset_limit_reached"};
+			if (_category in ["Vehicles", "Gear", "Defences", "Aircraft", "Naval"] && _vehiclesCnt + WL2_vehsInBasket >= WL2_assetLimit) exitWith {_ret = FALSE; _tooltip = localize "STR_WL2_popup_asset_limit_reached"};
 			if (_category == "Defences") exitWith {
 				if (vehicle player != player) then {
 					_ret = FALSE;

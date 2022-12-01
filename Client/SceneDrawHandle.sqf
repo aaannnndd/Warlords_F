@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 WL2_sceneDrawHandler = addMissionEventHandler ["Draw3D", {
 	if (WL2_markersAlpha > 0) then {

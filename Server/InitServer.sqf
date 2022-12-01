@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 ["server_init"] call BIS_fnc_startLoadingScreen;
 

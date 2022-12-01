@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 while {!WL2_missionEnd} do {
 	setGroupIconsSelectable TRUE;

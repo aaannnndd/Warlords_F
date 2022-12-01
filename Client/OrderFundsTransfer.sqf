@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 for [{_i = 100}, {_i <= 114}, {_i = _i + 1}] do {
 	(_display displayCtrl _i) ctrlEnable FALSE;

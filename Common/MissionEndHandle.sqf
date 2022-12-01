@@ -1,4 +1,4 @@
-#include "..\warlords_constants.inc"
+#include "..\warlords_constants.hpp"
 
 waitUntil {sleep WL_TIMEOUT_SHORT; (WL2_base1 getVariable "WL2_owner") == (WL2_base2 getVariable "WL2_owner")};
 
