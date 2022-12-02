@@ -1,0 +1,83 @@
+/*
+	SIDE1 and SIDE2 are determined by CombatantsPreset in params.
+		Presets
+			0	[WEST, EAST]
+			1	[WEST, RESISTANCE]
+			2	[EAST, RESISTANCE]
+
+	
+	WHEN WL2_sectorUpdateInProgress == TRUE (The following 3 values are being updated)
+
+	WL2_sectorsArrays = [ [Side 1: SectorListInfo ], [Side 2: SectorListInfo] ];
+	WL2_sectorsArray = [ PlayerSide: SectorListInfo ]
+	WL2_sectorsArrayEnemy = [ OppositeSide: SectorListInfo ]
+
+	SectorListInfo: Structure
+		0	_owned = sectors with the same side
+		1	_available = sectors you are capable of attacking (enemy sectors linked to an owned sector (Which is linked to base))
+		2	_linked = sectors that are linked to base
+		3	_unlocked = previously owned sectors
+		4	_income = total income from all sectors
+		5	_services = all available services
+		6	(_owned - _linked) = disconected bases
+		7	(_unlocked - _owned - _available) = 'back cappable' bases. (Bases you can seize, that you can't directly attack).
+
+	WL2_currentTarget_SIDE1	= Sector currently attacked by SIDE1
+	WL2_currentTarget_SIDE2 = Sector currently attacked by SIDE2
+	WL2_base1 = preset sector for base
+	WL2_base2 = preset sector for base
+	WL_BASES = [WL2_base1, WL2_base2]
+	WL2_allSectors = all available sectors
+
+	Sector: Structure
+		Type: "Logic" (GameLogic)
+		Variables:
+			WL2_owner 					- SIDE (who owns the sector)
+			WL2_originalOwner			- SIDE (original owner)
+			WL2_previousOwners			- [SIDE] (Array of sides)
+
+			WL2_name					- String - name of sector
+
+			WL2_connectedSectors		- [Sectors] (Array of sectors)
+
+			WL2_revealedBy 				- [SIDE] (Array of sides)
+
+			WL2_zoneRestrictionTrgs 	- [TriggerSide1, TriggerSide2] (Array of two triggers to detect each player side) [ZoneRestriction]
+			WL2_seizeControlTrgs		- [TriggerSide1, TriggerSide2] (Array of two triggers to detect each player side) [SeizingTriggers]
+			WL2_detectionTrgs			- [TriggerSide1, TriggerSide2] (Array of two triggers to detect each player side) [FogOfWar]
+				Element Type: "Trigger" (EmptyDetector)
+					WL2_handledSide			- Side it handles
+					WL2_sector				- Sector it handles
+
+			WL2_vehiclesToSpawn			- [Array of arrays of vehicle info]
+				Element Structure: [typeOf _vehicle, position _vehicle, direction _vehicle, locked _vehicle. [Array of Waypoints] ];
+
+			WL2_agentGrp				- Civilian Logic for creating a map icon I believe?
+			WL2_canBeBase				- Boolean
+			WL2_services				- ["A", "H", "W"] (Air, Helipad, Water) -> (Runway, Helipad, Harbour)
+			WL2_fastTravelEnabled		- Boolean
+
+			WL2_markers					- 3 Markers,
+				0	Base Icon
+				1	Base Area
+				2	Base Zone Restriction
+
+		(Tagless Variables)
+			objectArea					- [sidea, sideb, angle, isRectangle] (array of params copied from setTriggerArea)
+			objectAreaComplete			- Adds position to 'objectArea' to allow use with 'inArea' 
+				Initialized Here: _sector setVariable ["objectAreaComplete", [position _sector] + (_sector getVariable "objectArea")];
+
+			[init field in editor]
+			border				- zone restriction 'buffer'
+			funds				- cp/min
+			size				- size of sector (side of square)
+			service_helipad		- helipad or nah
+			service_runway		- runway or nah
+			server_harbour		- harbour or nah
+			fasttravelenabled	- ft of nah
+			locationname		- boolean, not sure
+			seizingtime			- time to seize
+			name				- name of sector
+			side				- default side
+
+*/
