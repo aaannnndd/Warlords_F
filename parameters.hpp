@@ -1,5 +1,12 @@
 class Params
 {
+	class BaseLocation
+	{
+		title = "Base Location";
+		values[] = {0, 1};
+		texts[] = {"Default", "Random"};
+		default = 0;
+	};
 	class CombatantsPreset
 	{
 		title = "Combatants";
